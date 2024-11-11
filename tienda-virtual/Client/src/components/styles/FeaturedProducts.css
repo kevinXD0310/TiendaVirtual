@@ -1,0 +1,25 @@
+.featured-products {
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.featured-products h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.product-list {
+    display: flex;
+    overflow-x: scroll;
+    gap: 15px;
+}
+
+.product-list .product {
+    flex: 0 0 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+}

@@ -1,0 +1,21 @@
+.category-list {
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.category-list h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.categories .category {
+    width: 80px;
+    text-align: center;
+}

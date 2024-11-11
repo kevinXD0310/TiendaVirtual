@@ -1,0 +1,23 @@
+.discounts {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f0e5e5;
+}
+
+.discount {
+    padding: 20px;
+    width: 45%;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.discount:first-child {
+    background-color: #333;
+}
+
+.discount:last-child {
+    background-color: #ff6347;
+}

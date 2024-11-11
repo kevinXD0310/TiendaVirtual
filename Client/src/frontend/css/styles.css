@@ -9,38 +9,51 @@ body {
     line-height: 1.6;
 }
 
-header {
-    background-color: #f8f8f8;
+.header {
+    background-color: #ce6097;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: start;
     padding: 10px 20px;
+    text-align: center;
 }
 
-.logo img {
-    width: 50px;
+.titulo{
+    text-align: center;
+    padding: 20px;
 }
 
-.menu-toggle {
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
+.nav{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    padding: 6px 100px 6px 40px;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+.logo img{
+    width: 100px;
 }
 
 .nav-links {
     list-style-type: none;
-    display: none;
+    display: inline-block;
+    padding: 10px;
 }
 
 .nav-links li {
     margin: 10px 0;
 }
 
-.nav-links li a {
+.nav-link{
     text-decoration: none;
     color: #333;
     font-size: 18px;
+}
+
+.nav-link:hover {
+    background-color: #ce6097;
 }
 
 .hero {
