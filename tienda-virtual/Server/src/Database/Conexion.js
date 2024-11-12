@@ -1,20 +1,26 @@
-const mongoose = require('mongoose');
+const { execSync } = require('child_process');
+const admin = require('firebase-admin');
 
-const connectDB = async () => {
-    try {
-        //URI de conexión de MongoDB
-        const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/tu_base_de_datos';
-    
-        await mongoose.connect(mongoURI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-    
-    console.log('Conectado a MongoDB correctamente');
-    } catch (error) {
-        console.error('Error al conectar a MongoDB:', error.message);
-        process.exit(1); // Termina el proceso en caso de error
-    }
-};
+try {
+    // Ejecuta el comando para descifrar el archivo GPG y obtener el contenido en memoria
+    const decryptedCredentials = execSync('gpg --batch --decrypt ./sknails-78b8f-firebase-adminsdk-gw4jd-e76f7c9372.json.gpg', { encoding: 'utf-8' });
 
-module.exports = connectDB;
+    // Parsear las credenciales descifradas como JSON
+    const serviceAccount = JSON.parse(decryptedCredentials);
+
+    // Inicializa Firebase Admin
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        storageBucket: 'gs://sknails-78b8f.firebasestorage.app',
+    });
+
+    // Exportar Firestore, Storage y Authentication
+    const db = admin.firestore(); // Firestore
+    const bucket = admin.storage().bucket(); // Storage
+    const auth = admin.auth(); // Authentication
+
+    module.exports = { db, bucket, auth };
+} catch (error) {
+    console.error('Error al descifrar el archivo GPG o inicializar Firebase:', error.message);
+    process.exit(1);
+}
